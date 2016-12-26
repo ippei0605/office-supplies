@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Office Supplies</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="/mybootstrap.css">
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+    <script src="/index.js"></script>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <a href="#" data-toggle="popover" title="JIECのAPIソリューション"
+           data-content="Bluemixフロントエンド 〜 Bluemix APIC 〜 On-premise RD&T zConnect 連携デモ" data-placement="bottom">
+            <img src="/images/jiec.png">
+        </a>
+    </div>
+</header>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample8">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" data-toggle="popover" data-content="今は事務用品だけです。"
+               data-placement="top">カテゴリー</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarEexample8">
+            <ul class="nav navbar-nav">
+                <li><a href="#">事務用品</a></li>
+            </ul>
+            <p class="navbar-text navbar-right">ようこそ <a href="#" class="navbar-link" data-toggle="popover"
+                                                        data-content="今はログインできません。" data-placement="top">ゲスト</a> さん。</p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <% result.forEach(function(row) { %>
+        <div class="col-md-3 col-sm-6">
+            <div class="image">
+                <a href="#" data-toggle="modal" data-target="#modalId" data-ref="<%= row.ca_item_ref %>"
+                   data-cost="<%= Number(Math.ceil(row.ca_cost * 117.6)).toLocaleString() %>"
+                   data-stock="<%= row.in_stock %>" data-description="<%= row.ca_description %>">
+                    <img src="/images/<%= row.ca_item_ref %>.png" class="img-responsive full-width　center-block"/>
+                </a>
+            </div>
+            <div class="text-left item-description">
+                <%= row.ca_description %><br>
+                価格 <%= Number(Math.ceil(row.ca_cost * 117.6)).toLocaleString() %> 円<br>
+                残り <%= row.in_stock %> 個<br>
+                <br>
+            </div>
+        </div>
+        <% }); %>
+        <div class="clearfix visible-xs-block"></div>
+    </div>
+</div>
+
+<div class="container-fluid footer1 text-center">
+    <a class="footer-link" href="#">トップへ戻る</a>
+</div>
+
+<div class="container-fluid footer2 text-center">
+    <div class="row">
+        <div class="col-md-3">JIECについて</div>
+        <div class="col-md-3">JIECでビジネス</div>
+        <div class="col-md-3">JIECでのお支払い</div>
+        <div class="col-md-3">ヘルプ＆ガイド</div>
+    </div>
+    <br>
+</div>
+
+<div class="container-fluid footer3 text-center">
+    <p>© 1985-2016, JIEC.co.jp, Co. Ltd. or its affiliates</p>
+</div>
+
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="modalId" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                <h4 class="modal-title"><span id="modalTitleId"></span></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <img id="itemImageId" class="img-responsive full-width　center-block"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <table class="table table-hover">
+                            <tr><td>在庫</td><td class="text-right"><span id="stockId"></span> 個</td></tr>
+                            <tr><td>単価</td><td class="text-right"><span id="costId"></span> 円</td></tr>
+                            <tr><td>数量</td><td class="text-right"><input type="number"> 個</td></tr>
+                            <tr><td>金額</td><td class="text-right"><span id="costId"></span> 円</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <button type="button" class="btn btn-primary">注文</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

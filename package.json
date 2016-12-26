@@ -1,0 +1,18 @@
+{
+  "name": "speech-to-text",
+  "version": "1.0.0",
+  "description": "Speech to Text",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.0",
+    "cfenv": "~1.0.3",
+    "ejs": "~2.5.3",
+    "express": "~4.13.4",
+    "morgan": "~1.7.0",
+    "request": "~2.79.0",
+    "serve-favicon": "~2.3.0"
+  }
+}
