@@ -28,13 +28,30 @@
 ## Bluemix API Connect
 本アプリから呼出している Bluemix API Connect 層のAPIを以下に示します。
 
-|説明|Method|処理|
-|一覧をリストするAPI|GET|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/listCatalog?startItemID={開始商品番号}|
-|商品詳細の照会API|GET|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/getItemDetails/{商品番号}|
-|オーダーAPI|POST|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/orderItem
-こちらは以下のBody(JSON形式)が必要です。
+1. 一覧をリストするAPI
+  
+        GET  
+        https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/listCatalog?startItemID={開始商品番号}
 
-{"DFH0XCMNOperation": {"ca_order_request": {"ca_quantity_req": 注文個数,"ca_item_ref_number": 商品番号} }|
+1. 商品詳細の照会API
+
+        GET
+        https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/getItemDetails/{商品番号}
+  
+1. オーダーAPI
+
+        POST
+        https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/orderItem
+        
+        次のBody(JSON形式)が必要です。
+        {
+          "DFH0XCMNOperation": {
+            "ca_order_request":{
+              "ca_quantity_req": 注文個数,
+              "ca_item_ref_number": 商品番号
+            }
+          }
+        }
 
 
 ※３つのAPIとも、実行できるアプリケーションを特定しているので、ヘッダーにクライアントIDが必要です。
