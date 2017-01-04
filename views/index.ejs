@@ -52,7 +52,12 @@
 
 <div class="container-fluid">
     <div class="row">
-        <% result.forEach(function(row) { %>
+        <% if(result.length === 0) { %>
+        <p class="text-danger item-description">
+            アイテムを取得できませんでした。<br>
+            障害の可能性があります。暫くしてから再度アクセスしてください。
+        </p>
+        <% } else { result.forEach(function(row) { %>
         <div class="col-md-3 col-sm-6">
             <div class="image">
                 <a href="#" data-toggle="modal" data-target="#orderModalId" data-ref="<%= row.ca_item_ref %>"
@@ -68,7 +73,7 @@
                 <br>
             </div>
         </div>
-        <% }); %>
+        <% }); } %>
         <div class="clearfix visible-xs-block"></div>
     </div>
 </div>
