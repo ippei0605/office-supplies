@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>Office Supplies</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -54,7 +55,7 @@
         <% result.forEach(function(row) { %>
         <div class="col-md-3 col-sm-6">
             <div class="image">
-                <a href="#" data-toggle="modal" data-target="#modalId" data-ref="<%= row.ca_item_ref %>"
+                <a href="#" data-toggle="modal" data-target="#orderModalId" data-ref="<%= row.ca_item_ref %>"
                    data-cost="<%= Number(Math.ceil(row.ca_cost * 117.6)).toLocaleString() %>"
                    data-stock="<%= row.in_stock %>" data-description="<%= row.ca_description %>">
                     <img src="/images/<%= row.ca_item_ref %>.png" class="img-responsive full-width　center-block"/>
@@ -78,10 +79,10 @@
 
 <div class="container-fluid footer2 text-center">
     <div class="row">
-        <div class="col-md-3">JIECについて</div>
-        <div class="col-md-3">JIECでビジネス</div>
-        <div class="col-md-3">JIECでのお支払い</div>
-        <div class="col-md-3">ヘルプ＆ガイド</div>
+        <div class="col-md-3 col-sm-6">JIECについて</div>
+        <div class="col-md-3 col-sm-6">JIECでビジネス</div>
+        <div class="col-md-3 col-sm-6">JIECでのお支払い</div>
+        <div class="col-md-3 col-sm-6">ヘルプ＆ガイド</div>
     </div>
     <br>
 </div>
@@ -90,32 +91,72 @@
     <p>© 1985-2016, JIEC.co.jp, Co. Ltd. or its affiliates</p>
 </div>
 
-<!-- モーダル・ダイアログ -->
-<div class="modal fade" id="modalId" tabindex="-1">
+<div class="modal fade" id="orderModalId" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    <h4 class="modal-title"><span id="modalTitleId"></span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <input type="hidden" id="refId" name="id">
+                                <span class="input-group-addon">数量</span>
+                                <input type="number" id="numberId" name="number" class="form-control text-right">
+                                <span class="input-group-addon">個</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 item-table">
+                            <img id="itemImageId" class="img-responsive full-width　center-block"/>
+                        </div>
+                        <div class="col-xs-8 item-table">
+                            <table class="table table-bordered table-striped">
+                                <tr>
+                                    <td>在庫</td>
+                                    <td class="text-right"><span id="stockId"></span> 個</td>
+                                </tr>
+                                <tr>
+                                    <td>単価</td>
+                                    <td class="text-right"><span id="costId"></span> 円</td>
+                                </tr>
+                                <tr>
+                                    <td>金額</td>
+                                    <td class="text-right"><span id="priceId"></span> 円</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group btn-group-justified" role="group">
+                        <a href="#" class="btn btn-default" role="button" data-dismiss="modal">キャンセル</a>
+                        <a href="#" class="btn btn-primary" role="button" id="orderId">注文</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="resultModalId" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                <h4 class="modal-title"><span id="modalTitleId"></span></h4>
+                <h4 class="modal-title">Result</h4>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-6">
-                        <img id="itemImageId" class="img-responsive full-width　center-block"/>
-                    </div>
-                    <div class="col-xs-6">
-                        <table class="table table-hover">
-                            <tr><td>在庫</td><td class="text-right"><span id="stockId"></span> 個</td></tr>
-                            <tr><td>単価</td><td class="text-right"><span id="costId"></span> 円</td></tr>
-                            <tr><td>数量</td><td class="text-right"><input type="number"> 個</td></tr>
-                            <tr><td>金額</td><td class="text-right"><span id="costId"></span> 円</td></tr>
-                        </table>
-                    </div>
-                </div>
+                <p id="resultModalMessageId"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                <button type="button" class="btn btn-primary">注文</button>
+                <div class="btn-group btn-group-justified" role="group">
+                    <a href="#" class="btn btn-default" role="button" id="okId" data-dismiss="modal">OK</a>
+                </div>
             </div>
         </div>
     </div>

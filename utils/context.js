@@ -23,3 +23,6 @@ exports.headers = {
     "Content-Type": "application/json",
     "x-ibm-client-id": process.env.X_IBM_CLIENT_ID
 };
+
+/** List Catalog 最後の要素数 */
+exports.LIST_CATALOG_LAST_NUMBER = 14;

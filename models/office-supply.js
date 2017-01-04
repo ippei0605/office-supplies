@@ -67,19 +67,14 @@ var listItems = function (startItemID, current, callback) {
         if (body != null) {
             var request = body.DFH0XCMNOperationResponse.ca_inquire_request;
             var temp = request.ca_cat_item;
-            var maxLength = 14;
-            var max = maxLength;
-            if (request.ca_item_count < maxLength) {
-                max = request.ca_item_count;
-            }
+            var max = request.ca_item_count < context.LIST_CATALOG_LAST_NUMBER ? request.ca_item_count : context.LIST_CATALOG_LAST_NUMBER;
+
             for (var i = 0; i < max; i++) {
                 result.push(temp[i]);
             }
 
-            if (max == maxLength) {
-                listItems(temp[max].ca_item_ref, result, function (result) {
-                    callback(result);
-                });
+            if (max === context.LIST_CATALOG_LAST_NUMBER) {
+                listItems(temp[max].ca_item_ref, result, callback);
             } else {
                 callback(result);
             }

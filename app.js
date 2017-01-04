@@ -22,15 +22,12 @@ app.use(logger('dev'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(favicon(__dirname + '/public/favicon.ico'));
 
-// serve the files out of ./public as our main files
-app.use(express.static(__dirname + '/public'));
-
 // ルートを設定する。
 app.get('/', routes.index);
 app.get('/item/:id', routes.get);
-app.get('/item/:id/order/:num', routes.order);
+app.post('/item/order', routes.order);
 
 // リクエトを受付ける。
-app.listen(context.appEnv.port, '0.0.0.0', function() {
+app.listen(context.appEnv.port, '0.0.0.0', function () {
     console.log('server starting on ' + context.appEnv.url);
 });
