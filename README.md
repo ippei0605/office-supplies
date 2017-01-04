@@ -25,6 +25,33 @@
   ![注文](docs/result.png)  
 * OKボタンをクリックしてください。トップページに戻ります。   
 
+## Bluemix API Connect
+本アプリから呼出している Bluemix API Connect 層のAPIを以下に示します。
+
+|説明|Method|処理|
+|一覧をリストするAPI|GET|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/listCatalog?startItemID={開始商品番号}|
+|商品詳細の照会API|GET|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/getItemDetails/{商品番号}|
+|オーダーAPI|POST|https://api.us.apiconnect.ibmcloud.com/jieckiban-demo/office/catalogMgr/orderItem
+こちらは以下のBody(JSON形式)が必要です。
+
+{"DFH0XCMNOperation": {"ca_order_request": {"ca_quantity_req": 注文個数,"ca_item_ref_number": 商品番号} }|
+
+
+※３つのAPIとも、実行できるアプリケーションを特定しているので、ヘッダーにクライアントIDが必要です。
+
+　x-ibm-client-id:082d49d4-215f-48e5-931e-fc70a26ada9a
+
+※その他、ヘッダーにacceptとcontext-typeくらいは指定しておいた方がよいかも。
+
+　accept: application/json
+　content-type: application/json
+
+
+
+
+
+
+
 ## ファイル構成  
     office-supplies
     │  .cfignore
@@ -69,3 +96,6 @@
 * z/OS Connect Enterprise Edition V2.0  
   https://www-03.ibm.com/support/techdocs/atsmastr.nsf/WebIndex/WP102604  
   - [Getting Started Guide](https://www-03.ibm.com/support/techdocs/atsmastr.nsf/5cb5ed706d254a8186256c71006d2e0a/ef7025c4a674ca4a86257f0d00725591/$FILE/WP102604%20-%20zOS%20Connect%20EE%20V2%20Getting%20Started.002.pdf/WP102604%20-%20zOS%20Connect%20EE%20V2%20Getting%20Started.pdf)
+* IBM デモサイト  
+  https://officesupplies.mybluemix.net/  
+  (JeanLeclerc/jean)  
