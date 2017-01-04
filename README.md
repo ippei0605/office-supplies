@@ -1,7 +1,8 @@
 # Office Supplies  
 
 ## はじめに
-「JIEC の API ソリューション」のデモアプリは次の3層構造になっています。
+「JIEC の API ソリューション」のデモアプリは次の3層構造になっています。  
+
 1. On-premise RD&T zConnect
 1. Bluemix API Connect
 1. Bluemixフロントエンド
@@ -12,10 +13,17 @@
 ### 前提条件
 * 3層アプリが全て稼働していること。(基本的に常時稼働しています。)
 
-### トップページのアクセス
+### トップページにアクセスする
 * 次のURLにアクセスしてください。(Amazon.co.jp に似たデザインのページが表示されます。)  
   https://jiec-prime.mybluemix.net/  
   ![トップページ](docs/top.png)  
+
+### 注文する
+* アイテムをクリックすると注文ダイアログが表示されます。  
+  ![注文](docs/order.png)  
+* 数量を入力して、注文ボタンをクリックしてください。次の結果が表示されます。(数量は1〜在庫数または999個まで)  
+  ![注文](docs/result.png)  
+ 
 
 ## ファイル構成  
     office-supplies
