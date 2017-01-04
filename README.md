@@ -59,7 +59,6 @@
 独自の実行環境をセットアップする手順を以下に示します。利用するだけであれば、前述の実行手順をご覧ください。  
 
 1. 本サイトから office-supplies アプリをダウンロード (Download ZIP) して解凍してください。ディレクトリ名は office-supplies-master から office-supplies に変更してください。  
-
 1. Bluemix コンソールから CFアプリケーション (Node.js) を作成してください。以下の ippei0605 はご自身のユーザ名などに変更してください。  
 アプリケーション名: office-supplies-ippei0605 (任意)  
 1. Bluemix コンソールから CF アプリの環境変数 (ユーザー定義) を設定します。次の変数を設定してください。
