@@ -61,8 +61,8 @@
 
 1. 本サイトから office-supplies アプリをダウンロード (Download ZIP) して解凍してください。ディレクトリ名は office-supplies-master から office-supplies に変更してください。  
 
-1. Bluemix コンソールから CFアプリケーション (Node.js) を作成してください。以下の ippei0605 はご自身のユーザ名などに変更してください。  
-アプリケーション名: office-supplies-ippei0605 (任意)  
+1. Bluemix コンソールから CFアプリケーション (Node.js) を作成してください。以下の 310-O970605- は私が使用しているスペースのルールで接頭語を付加しています。
+アプリケーション名: 310-O970605-office-supplies (任意)  
 
 1. Bluemix コンソールから CF アプリの環境変数 (ユーザー定義) を設定します。次の変数を設定してください。
       * X_IBM_CLIENT_ID : クライアントID　　
@@ -82,7 +82,7 @@
 
 1. アプリをデプロイしてください。
 
-        > cf push "office-supplies-ippei0605"
+        > cf push "310-O970605-office-supplies"
 
 
 ## ファイル構成  
